@@ -1,0 +1,159 @@
+##Tipos de datos: vectores
+#Practica
+#Definición: Para definir un vector se utiliza la función c(), que siginfica combine
+x<- c (2,4,6,8,10,12)
+x
+#Longitud de un vector, utilizamos comando length(x)
+length(x)
+#Uso de la función combine c() y el operador: Un vector se puede definir de forma extensiva, es decir poniendo explícitamente todos los valores del vector.
+hermanos<- c("majo","emma","vale","vicky","alfredo")
+orden<- c(1,2,3,4,5)
+x<- 1:80
+x
+#podemos usar la función seq() que significa sequence. seq() es una general (lo mismo)
+x<- seq(1,80)
+#Podemos generar secuencias numéricas de distintas clase y espaciadas por diferentes rangos
+rangos<- seq(from=-50,to=50,by=5)
+rangos
+#Acceder a elementos de un vector, Elementos consecutivos de un vector, puedes seleccionar que
+#elementos del vector necesitas con corchetes []
+sabores<- c("chocolate","fresa","vainilla","menta","chicle")
+sabores[1:4]
+#Elementos no consecutivos de un vector,definimos un nuevo vector (con la función c() ) 
+sabores<- c("chocolate","fresa","vainilla","menta","chicle")
+sabores [c(1,3,5)]
+#Excluir elementos de un vector
+sabores<- c("chocolate","fresa","vainilla","menta","chicle")
+sabores[-2]
+#podemos excluir algunos elementos juntos
+sabores[-c(2,4,5)]
+sabores [-length(sabores)] #??
+#Agregar y quitar elementos de un vector
+x <- c(88,5,12,13)
+x <- c(x[1:3],168,x[4])
+ciudades <- c ("queretaro","veracruz","zacatecas","campeche","oaxaca","guadalajara")
+ciudades<- c(ciudades[1:3],4,ciudades[5]) #??
+ciudades
+#Podemos, incluso, definir un vector vacío y luego “llenarlo”
+vacio <- c()
+vacio
+#llenarlo
+vacio[3]<- 12
+vacio[3:6] <-c(7,8,9,10)
+vacio
+#Repetición de elementos de un vector con rep()
+#La función rep() nos permite repetir elementos en un vector dado.
+x<-rep(8,100)
+x
+ejercicio <- rep(c(1,2,3,4,5),10)
+ejercicio
+#También podemos usar la opción each para indicar la frecuencia de repetición
+fruta <- c("mango","mamey","manzana","mora","mandarina")
+ensalada <- rep (c("mango","mamey","manzana","mora","mandarina"),each=10)
+ensalada
+#Uso de funciones any() y all()
+#Las funciones any() y all() determinan si alguno o todos los elementos de un vector cumplen cierta condición
+#La respuesta  TRUE o FALSE
+dias<- 1:365
+any(dias < 200)
+#Operaciones con vectores
+suma <- c(350,120)
+suma_2 <- c(180,35)
+suma + suma_2
+##Multiplicación por escalar: término a término
+8*suma
+#Funciones para calcular min(), max(), range() , sum(), mean(), median(), sd(),quantile(),unique(),sort() 
+funcion <- -rnorm(100)
+funcion
+min (funcion)
+max(funcion)
+range(funcion)
+sum(funcion)
+mean(funcion)
+median(funcion)
+sd (funcion)
+quantile (funcion)
+#Para unique() y sort() conviene tener elementos discretos más que continuos
+##Gráficos con vectores
+funcion_2<- rnorm(200)
+hist(funcion,col="orange")
+
+#Vectores con nombre
+edades <- c (35,35,70,17,14)
+nombres <- c ("Jerry","Beth","Rick", "Summer", "Morty")
+
+names (edades)<- nombres
+edades [2]
+
+#Ejercicios: 1. ¿Cuál es el promedio de las edades, sin contar el de Beth?
+#2. Quiten a Morty del vector, ordénenlo y guárdenlo como un nuevo objeto.
+#3. ¿Hay alguna edad que sea mayor de 75? ¿Menor de 12? ¿Entre 12 y 20?
+
+#1
+mean (edades [-2])
+#2
+withoutm <- edades[c(-5)]
+withoutm
+#3
+any (edades > 75)
+any (edades < 12)
+
+which (edades > 12 & edades < 20)
+
+#Tamaños de genomas
+genomeSizeM_BP<-c(022764.1,032488.1,008301.1,024374.1,028683.1)
+genomeSizeM_BP*1e6 #si queremos ver el numero de pb, multiplicamos por el prefijo mega
+
+organismo <- c ("bacillus_virus","beihai_blue_swimmer_crab_virus","capsicum_chlorosis_virus","chilli_leaf_curl_alphasatellite","edwardsiella_phage")
+
+names (genomeSizeM_BP) <- organismo
+genomeSizeM_BP
+
+genomeSizeM_BP [3] #podemos seleccionar elementos del vector usando corchetes
+
+genomeSizeM_BP [2:4] #para elementos consecutivos
+
+genomeSizeM_BP [c(2,4,5)] #para elementos no consecutivos
+
+##Ejercicios
+#1. Generar un vector de las edades de 10 de tus compañeros
+clase_edad <- c(23,21,20,19,20,20,21,20,21,20)
+clase_nomb <- c("vale","raul","caro", "erick","mafer","franco","rebeca","julian","adrian","pali")
+#2 Asignarles nombre
+names (clase_edad) <- clase_nomb
+clase_nomb
+#3 Encuentra el mín,máx, media, mediana, la desviación estándar, la longitud del vector y selecciona
+#sólo los elementos impares.
+
+min (clase_edad)
+max(clase_edad)
+sd (clase_edad)
+mean(clase_edad)
+median(clase_edad)
+length(clase_edad)
+impares <- (-C[1,2,4,7.9]) #todos menos impares
+
+sinmaxmin <- clase_nomb [c(-1,-4)]
+sinmaxmin
+
+#Existe una fución para determinar si un elemento es o no una NA. La función es is.na()
+x <- c(88,NA,12,168,13)
+is.na(x)
+
+x <- c(88,NA,12,168,13)
+mean(x,na.rm=TRUE)
+
+#La función which() nos regresa los índices es decir nos dicen quiénes cumplen cierta condición
+z <- c(5,2,-3,8)
+
+which (z*z > 8)
+
+#Para probar si dos elementos son iguales se utiliza el operador de comparación == son dos signos iguales juntos, sin espcaio.
+x<-c (1,4,9,16,25)
+y<-1:5
+y<-y*y
+x==y
+
+library(ggplot2)
+
+
